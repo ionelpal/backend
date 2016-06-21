@@ -55,7 +55,8 @@ namespace nccloudService
         }
     }
 
-    public class nccloudInitializer : CreateDatabaseIfNotExists<nccloudContext>
+     // public class nccloudInitializer : CreateDatabaseIfNotExists<nccloudContext>
+    public class nccloudInitializer : DropCreateDatabaseAlways<nccloudContext>
     {
         protected override void Seed(nccloudContext context)
         {
@@ -83,9 +84,9 @@ namespace nccloudService
 
             List<Patient> patients = new List<Patient>
                 {
-                    new Patient {Id = Guid.NewGuid().ToString(), PatientName="John Smith", Location=locations[0], Customers =new Collection<Customer> { customers[0]}},
-                    new Patient {Id = Guid.NewGuid().ToString(), PatientName="John Smith", Location=locations[1], Customers =new Collection<Customer> { customers[1]}},
-                     new Patient {Id = Guid.NewGuid().ToString(), PatientName="John Smith", Location=locations[2], Customers =new Collection<Customer> { customers[2]}}
+                    new Patient {Id = Guid.NewGuid().ToString(), PatientName="John Smith", Location=locations[0], Customers = customers[0] },
+                    new Patient {Id = Guid.NewGuid().ToString(), PatientName="Ionel Pal", Location=locations[1], Customers = customers[1]},
+                     new Patient {Id = Guid.NewGuid().ToString(), PatientName="Anthony Pal", Location=locations[2], Customers = customers[2]}
                 };
             foreach (Patient patient in patients)
             {
@@ -94,7 +95,11 @@ namespace nccloudService
 
             List<Message> messages = new List<Message>
                 {
-                    new Message {Id = Guid.NewGuid().ToString(), Title="Message 1", Details="Message detail 1", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Good News", Details="Just ley you kno that John had a great day today", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Updates", Details="All the same tody, no new improvements.", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Please Contact us ASP", Details="John need to be sent to the hospital ASP, we need your concent please. The docto recomends a surgery", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="New updates", Details="Thanks for yoy quick reply. So far he is stable and resting", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+
                      new Message {Id = Guid.NewGuid().ToString(), Title="Message 2", Details="Message detail 2", WrittebBy="Adriana",CustomerEmail="ionelpal@gmail.com",  Patient=patients[1] },
                       new Message {Id = Guid.NewGuid().ToString(), Title="Message 3", Details="Message detail 2", WrittebBy="Marie", CustomerEmail="elenarpal@gmail.com", Patient=patients[2] }
                 };

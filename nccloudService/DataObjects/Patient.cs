@@ -15,6 +15,6 @@ namespace nccloudService.DataObjects
 
         public virtual ICollection<Message> Messages { get; set; }  
         
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual Customer Customers { get; set; }
     }
 }
