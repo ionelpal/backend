@@ -183,6 +183,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy.pubxml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

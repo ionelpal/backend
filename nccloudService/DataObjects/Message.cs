@@ -12,7 +12,7 @@ namespace nccloudService.DataObjects
         public string CustomerEmail { get; set; }
         public string Title { get; set; }   
         public string Details { get; set; }
-        public string WrittebBy { get; set; }
+        public string WrittenBy { get; set; }
         public virtual Patient Patient { get; set; }
 
     }

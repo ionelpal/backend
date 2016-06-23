@@ -95,13 +95,13 @@ namespace nccloudService
 
             List<Message> messages = new List<Message>
                 {
-                    new Message {Id = Guid.NewGuid().ToString(), Title="Good News", Details="Just ley you kno that John had a great day today", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
-                    new Message {Id = Guid.NewGuid().ToString(), Title="Updates", Details="All the same tody, no new improvements.", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
-                    new Message {Id = Guid.NewGuid().ToString(), Title="Please Contact us ASP", Details="John need to be sent to the hospital ASP, we need your concent please. The docto recomends a surgery", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
-                    new Message {Id = Guid.NewGuid().ToString(), Title="New updates", Details="Thanks for yoy quick reply. So far he is stable and resting", WrittebBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Good News", Details="Just ley you kno that John had a great day today", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Updates", Details="All the same tody, no new improvements.", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Please Contact us ASP", Details="John need to be sent to the hospital ASP, we need your concent please. The docto recomends a surgery", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="New updates", Details="Thanks for yoy quick reply. So far he is stable and resting", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
 
-                     new Message {Id = Guid.NewGuid().ToString(), Title="Message 2", Details="Message detail 2", WrittebBy="Adriana",CustomerEmail="ionelpal@gmail.com",  Patient=patients[1] },
-                      new Message {Id = Guid.NewGuid().ToString(), Title="Message 3", Details="Message detail 2", WrittebBy="Marie", CustomerEmail="elenarpal@gmail.com", Patient=patients[2] }
+                     new Message {Id = Guid.NewGuid().ToString(), Title="Message 2", Details="Message detail 2", WrittenBy="Adriana",CustomerEmail="ionelpal@gmail.com",  Patient=patients[1] },
+                      new Message {Id = Guid.NewGuid().ToString(), Title="Message 3", Details="Message detail 2", WrittenBy="Marie", CustomerEmail="elenarpal@gmail.com", Patient=patients[2] }
                 };
 
             foreach (Message message in messages)
