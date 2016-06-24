@@ -10,6 +10,7 @@ using nccloudService.DataObjects;
 using nccloudService.Models;
 using Owin;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace nccloudService
 {
@@ -55,8 +56,8 @@ namespace nccloudService
         }
     }
 
-     // public class nccloudInitializer : CreateDatabaseIfNotExists<nccloudContext>
-    public class nccloudInitializer : DropCreateDatabaseAlways<nccloudContext>
+     public class nccloudInitializer : CreateDatabaseIfNotExists<nccloudContext>
+   // public class nccloudInitializer : DropCreateDatabaseAlways<nccloudContext>
     {
         protected override void Seed(nccloudContext context)
         {
@@ -73,7 +74,7 @@ namespace nccloudService
             }
             List<Customer> customers = new List<Customer>
                 {
-                    new Customer {Id = Guid.NewGuid().ToString(),CustomerEmail="ionelpal@gmail.com", CustomerName="Ionel Pal", Location=locations[0] },
+                    new Customer {Id = Guid.NewGuid().ToString(),CustomerEmail="ionelpal@gmail.com", CustomerName="Ionel Pal", Location= locations[0] },
                      new Customer {Id = Guid.NewGuid().ToString(),CustomerEmail="elenarpal@gmail.com", CustomerName="Elena Pal", Location=locations[2] },
                       new Customer {Id = Guid.NewGuid().ToString(),CustomerEmail="anthonypal37@gmail.com", CustomerName="Ionel Smith", Location=locations[2]}
                 };
@@ -108,6 +109,21 @@ namespace nccloudService
             {
                 context.Set<Message>().Add(message);
             }
+
+
+            List<Event> events = new List<Event>
+                {
+                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Christmas Party", EventDetails="Event details aboout Christmas here",  EventDate= new DateTime(2016,11,10,10,0,0), Location = locations[0] },
+                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Charity Dayy", EventDetails="Event details about charity here",  EventDate= new DateTime(2016,12,11,10,0,0) },
+                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Halloween Party", EventDetails="Event details re here",  EventDate= new DateTime(2016,10,29,10,0,0) }
+                };
+
+            foreach (Event ev in events)
+            {
+                context.Set<Event>().Add(ev);
+            }
+
+
 
             base.Seed(context);
         }

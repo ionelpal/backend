@@ -14,5 +14,6 @@ namespace nccloudService.DataObjects
         public virtual ICollection<Customer> Custommers { get; set; }
       
         public virtual ICollection<Patient> Patients { get; set; }
+        public virtual ICollection<Event>Events { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace nccloudService.Models
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Event> Events { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Patient> Patients { get; set; }
