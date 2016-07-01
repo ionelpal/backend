@@ -159,6 +159,7 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
@@ -173,7 +174,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -185,10 +188,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %2810%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %2811%29.pubxml" />
     <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %286%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %287%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %288%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy %289%29.pubxml" />
     <None Include="Properties\PublishProfiles\ncazuremobile - Web Deploy.pubxml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

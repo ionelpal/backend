@@ -27,16 +27,16 @@ namespace nccloudService
                 .UseDefaultConfiguration()
                 .ApplyTo(config);
 
-            
+
 
             // Use Entity Framework Code First to create database tables based on your DbContext
-            Database.SetInitializer(new nccloudInitializer());
+             Database.SetInitializer(new nccloudInitializer());
 
             nccloudContext db = new nccloudContext();
-            db.Database.Initialize(true);
+             db.Database.Initialize(true);
            
             // To prevent Entity Framework from modifying your database schema, use a null database initializer
-            // Database.SetInitializer<nccloudContext>(null);
+           // Database.SetInitializer<nccloudContext>(null);
 
             MobileAppSettingsDictionary settings = config.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
@@ -56,16 +56,18 @@ namespace nccloudService
         }
     }
 
-     public class nccloudInitializer : CreateDatabaseIfNotExists<nccloudContext>
-   // public class nccloudInitializer : DropCreateDatabaseAlways<nccloudContext>
+   
+        
+   //  public class nccloudInitializer : CreateDatabaseIfNotExists<nccloudContext>
+    public class nccloudInitializer : DropCreateDatabaseAlways<nccloudContext>
     {
         protected override void Seed(nccloudContext context)
         {
             List<Location> locations = new List<Location>
                 {
-                    new Location {Id = Guid.NewGuid().ToString(),LocationName="Tara Winthrop"},
-                    new Location {Id = Guid.NewGuid().ToString(),LocationName="Balbriggan Private" },
-                    new Location {Id = Guid.NewGuid().ToString(),LocationName="Swords Clinic" }
+                    new Location {Id = Guid.NewGuid().ToString(),LocationName="Tara Winthrop", Address="Tara Winthrop Private Clinic, Nevinstown Lane, Swords, Co. Dublin, Ireland"},
+                    new Location {Id = Guid.NewGuid().ToString(),LocationName="Balbriggan Private", Address="1 Main Street, Balbriggan, Co Dublin, Ireland"},
+                    new Location {Id = Guid.NewGuid().ToString(),LocationName="Swords Clinic", Address="Swords, Main Street Swords, Swords, Ireland" }
                 };
 
             foreach (Location location in locations)
@@ -100,9 +102,15 @@ namespace nccloudService
                     new Message {Id = Guid.NewGuid().ToString(), Title="Updates", Details="All the same tody, no new improvements.", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
                     new Message {Id = Guid.NewGuid().ToString(), Title="Please Contact us ASP", Details="John need to be sent to the hospital ASP, we need your concent please. The docto recomends a surgery", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
                     new Message {Id = Guid.NewGuid().ToString(), Title="New updates", Details="Thanks for yoy quick reply. So far he is stable and resting", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                     new Message {Id = Guid.NewGuid().ToString(), Title="Good News", Details="Just ley you kno that John had a great day today", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Updates", Details="All the same tody, no new improvements.", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Please Contact us ASP", Details="John need to be sent to the hospital ASP, we need your concent please. The docto recomends a surgery", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="New updates", Details="Thanks for yoy quick reply. So far he is stable and resting", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                     new Message {Id = Guid.NewGuid().ToString(), Title="New updates", Details="Hi Ionel, Your father had a good day tody. He is making massive progress.", WrittenBy="Adriana",CustomerEmail="ionelpal@gmail.com",  Patient=patients[1] },
+                     new Message {Id = Guid.NewGuid().ToString(), Title="Please come by", Details="Hi, please come by to talk about the new recovery plan.", WrittenBy="Adriana",CustomerEmail="ionelpal@gmail.com",  Patient=patients[1] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Urgent", Details="Hi Ionel, Your father need urgent his new glasses ", WrittenBy="Adriana",CustomerEmail="ionelpal@gmail.com",  Patient=patients[1] },
 
-                     new Message {Id = Guid.NewGuid().ToString(), Title="Message 2", Details="Message detail 2", WrittenBy="Adriana",CustomerEmail="ionelpal@gmail.com",  Patient=patients[1] },
-                      new Message {Id = Guid.NewGuid().ToString(), Title="Message 3", Details="Message detail 2", WrittenBy="Marie", CustomerEmail="elenarpal@gmail.com", Patient=patients[2] }
+                      new Message {Id = Guid.NewGuid().ToString(), Title="Please call to discuss", Details="We have a situation here!", WrittenBy="Marie", CustomerEmail="elenarpal@gmail.com", Patient=patients[2] }
                 };
 
             foreach (Message message in messages)
@@ -114,8 +122,11 @@ namespace nccloudService
             List<Event> events = new List<Event>
                 {
                     new Event {Id = Guid.NewGuid().ToString(),EventTitle="Christmas Party", EventDetails="Event details aboout Christmas here",  EventDate= new DateTime(2016,11,10,10,0,0), Location = locations[0] },
-                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Charity Dayy", EventDetails="Event details about charity here",  EventDate= new DateTime(2016,12,11,10,0,0) },
-                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Halloween Party", EventDetails="Event details re here",  EventDate= new DateTime(2016,10,29,10,0,0) }
+                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Charity Dayy", EventDetails="Event details about charity here",  EventDate= new DateTime(2016,12,11,10,0,0) ,Location = locations[1] } ,
+                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Halloween Party", EventDetails="Event details re here",  EventDate= new DateTime(2016,09,29,10,0,0), Location = locations[2] },
+                      new Event {Id = Guid.NewGuid().ToString(),EventTitle="Christmas Party", EventDetails="Event details aboout Christmas here",  EventDate= new DateTime(2016,11,10,10,0,0), Location = locations[0] },
+                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Charity Dayy", EventDetails="Event details about charity here",  EventDate= new DateTime(2016,10,10,10,0,0) ,Location = locations[1] } ,
+                    new Event {Id = Guid.NewGuid().ToString(),EventTitle="Halloween Party", EventDetails="Event details re here",  EventDate= new DateTime(2016,11,29,10,0,0), Location = locations[2] }
                 };
 
             foreach (Event ev in events)

@@ -10,7 +10,8 @@ namespace nccloudService.DataObjects
 
 
         public string LocationName { get; set; }
-       
+        public string Address { get; set; } 
+
         public virtual ICollection<Customer> Custommers { get; set; }
       
         public virtual ICollection<Patient> Patients { get; set; }
