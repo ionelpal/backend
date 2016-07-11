@@ -23,7 +23,6 @@ namespace nccloudService.Controllers
             nccloudContext context = new nccloudContext();
             DomainManager = new EntityDomainManager<Message>(context, Request);
         }
-
         //get user email address
         private string GoogleSID()
         {
@@ -40,7 +39,6 @@ namespace nccloudService.Controllers
                 .Value;
             // Debug.WriteLine(credentials.UserClaims);
         }
-
 
         // GET tables/Message
         public async Task<IQueryable<Message>> GetAllMessage()

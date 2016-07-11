@@ -9,10 +9,6 @@ namespace nccloudService.DataObjects
 {
     public class Customer : EntityData
     {
-
-        //  public string CustomerId { get; set; } = Guid.NewGuid().ToString();
-
-
         public string CustomerEmail { get; set; }
 
         public string CustomerName { get; set; }
@@ -21,7 +17,6 @@ namespace nccloudService.DataObjects
        
         public virtual ICollection<Patient> Patients { get; set; }
     
-        public virtual ICollection<Message> Mesages { get; set; }
-          
+        public virtual ICollection<Message> Mesages { get; set; }     
     }
 }

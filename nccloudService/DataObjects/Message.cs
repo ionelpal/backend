@@ -14,6 +14,5 @@ namespace nccloudService.DataObjects
         public string Details { get; set; }
         public string WrittenBy { get; set; }
         public virtual Patient Patient { get; set; }
-
     }
 }

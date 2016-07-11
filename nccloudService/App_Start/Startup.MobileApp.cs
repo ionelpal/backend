@@ -19,31 +19,20 @@ namespace nccloudService
         public static void ConfigureMobileApp(IAppBuilder app)
         {
             HttpConfiguration config = new HttpConfiguration();
-
-            //For more information on Web API tracing, see http://go.microsoft.com/fwlink/?LinkId=620686 
             config.EnableSystemDiagnosticsTracing();
-
-            new MobileAppConfiguration()
+                new MobileAppConfiguration()
                 .UseDefaultConfiguration()
                 .ApplyTo(config);
-
-
-
-            // Use Entity Framework Code First to create database tables based on your DbContext
+   //Use Entity Framework Code First to create database tables based on your DbContext
              Database.SetInitializer(new nccloudInitializer());
 
             nccloudContext db = new nccloudContext();
              db.Database.Initialize(true);
-           
-            // To prevent Entity Framework from modifying your database schema, use a null database initializer
-           // Database.SetInitializer<nccloudContext>(null);
-
-            MobileAppSettingsDictionary settings = config.GetMobileAppSettingsProvider().GetMobileAppSettings();
+            MobileAppSettingsDictionary settings = 
+                config.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
             if (string.IsNullOrEmpty(settings.HostName))
             {
-                // This middleware is intended to be used locally for debugging. By default, HostName will
-                // only have a value when running in an App Service application.
                 app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions
                 {
                     SigningKey = ConfigurationManager.AppSettings["SigningKey"],
@@ -58,14 +47,14 @@ namespace nccloudService
 
    
         
-   //  public class nccloudInitializer : CreateDatabaseIfNotExists<nccloudContext>
-    public class nccloudInitializer : DropCreateDatabaseAlways<nccloudContext>
+     public class nccloudInitializer : CreateDatabaseIfNotExists<nccloudContext>
+   // public class nccloudInitializer : DropCreateDatabaseAlways<nccloudContext>
     {
         protected override void Seed(nccloudContext context)
         {
             List<Location> locations = new List<Location>
                 {
-                    new Location {Id = Guid.NewGuid().ToString(),LocationName="Tara Winthrop", Address="Tara Winthrop Private Clinic, Nevinstown Lane, Swords, Co. Dublin, Ireland"},
+                    new Location {Id = Guid.NewGuid().ToString(),LocationName="Tara Winthrop", Address="Tara Winthrop Private Clinic, Nevinstown Lane, Swords, Co. Dublin, Ireland"  },
                     new Location {Id = Guid.NewGuid().ToString(),LocationName="Balbriggan Private", Address="1 Main Street, Balbriggan, Co Dublin, Ireland"},
                     new Location {Id = Guid.NewGuid().ToString(),LocationName="Swords Clinic", Address="Swords, Main Street Swords, Swords, Ireland" }
                 };
@@ -100,7 +89,7 @@ namespace nccloudService
                 {
                     new Message {Id = Guid.NewGuid().ToString(), Title="Good News", Details="Just ley you kno that John had a great day today", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
                     new Message {Id = Guid.NewGuid().ToString(), Title="Updates", Details="All the same tody, no new improvements.", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
-                    new Message {Id = Guid.NewGuid().ToString(), Title="Please Contact us ASP", Details="John need to be sent to the hospital ASP, we need your concent please. The docto recomends a surgery", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
+                    new Message {Id = Guid.NewGuid().ToString(), Title="Please Contact us ASP", Details="John needs to be sent to the hospital ASP, we need your concent please. The doctor recomends a surgery.", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
                     new Message {Id = Guid.NewGuid().ToString(), Title="New updates", Details="Thanks for yoy quick reply. So far he is stable and resting", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
                      new Message {Id = Guid.NewGuid().ToString(), Title="Good News", Details="Just ley you kno that John had a great day today", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },
                     new Message {Id = Guid.NewGuid().ToString(), Title="Updates", Details="All the same tody, no new improvements.", WrittenBy="Elena", CustomerEmail="xxxirex@gmail.com",  Patient=patients[0] },

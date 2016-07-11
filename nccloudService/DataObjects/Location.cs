@@ -5,10 +5,6 @@ namespace nccloudService.DataObjects
 {
     public class Location : EntityData
     {
-
-        //public string LocationId { get; set; } = Guid.NewGuid().ToString();
-
-
         public string LocationName { get; set; }
         public string Address { get; set; } 
 
