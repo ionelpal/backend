@@ -6,6 +6,11 @@ using System.Web.Http.OData;
 using Microsoft.Azure.Mobile.Server;
 using nccloudService.DataObjects;
 using nccloudService.Models;
+using System.Security.Principal;
+using Microsoft.Azure.Mobile.Server.Authentication;
+using System.Diagnostics;
+using System.Net;
+using System.Security.Claims;
 
 namespace nccloudService.Controllers
  {
@@ -19,10 +24,29 @@ namespace nccloudService.Controllers
             DomainManager = new EntityDomainManager<Event>(context, Request);
         }
 
-        // GET tables/Event
-        public IQueryable<Event> GetAllEvent()
+        //get user email address
+        private string GoogleSID()
         {
-            return Query(); 
+            var principal = this.User as ClaimsPrincipal;
+            var sid = principal.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return sid;
+        }
+        private async Task<string> GetEmailAddress()
+        {
+            var credentials = await User.GetAppServiceIdentityAsync<GoogleCredentials>(Request);
+            return credentials.UserClaims
+                .Where(claim => claim.Type.EndsWith("/emailaddress"))
+                .First<Claim>()
+                .Value;
+            // Debug.WriteLine(credentials.UserClaims);
+        }
+
+        // GET tables/Event
+        public async Task<IQueryable<Event>> GetAllEvent()
+        {
+            var emailAddr = await GetEmailAddress();
+
+            return Query().Where(i=>i.Location.Custommers.All(item=>item.CustomerEmail == emailAddr)); 
         }
 
         // GET tables/Event/48D68C86-6EA6-4C25-AA33-223FC9A27959

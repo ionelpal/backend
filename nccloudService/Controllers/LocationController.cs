@@ -41,9 +41,6 @@ namespace nccloudService.Controllers
             // Debug.WriteLine(credentials.UserClaims);
         }
 
-
-
-
         // GET tables/Location
         public async Task<IQueryable<Location>> GetAllLocation()
         {

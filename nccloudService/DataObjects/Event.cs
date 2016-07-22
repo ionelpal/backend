@@ -12,5 +12,6 @@ namespace nccloudService.DataObjects
         public string EventDetails { get; set; }
         public DateTime EventDate { get; set; }
         public Location Location { get; set; }
+      //  public Customer Customer { get; set; }  
     }
 }
